@@ -87,9 +87,9 @@ section{padding:var(--section-pad) 0}
 
 /* Header — black */
 .site-header{position:sticky;top:0;z-index:50;background:var(--header-bg);color:var(--header-text);border-bottom:1px solid var(--line-dark)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--space-5);height:92px}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--space-5);height:84px}
 .brand{display:flex;align-items:center;color:var(--header-text)}
-.brand img{height:70px;width:auto}
+.brand img{width:205px;height:auto}
 .main-nav{display:flex;align-items:center;gap:26px}
 .main-nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--header-text);font-size:.92rem;font-weight:500;white-space:nowrap;transition:color var(--dur);padding:10px 4px;border-radius:6px}
 .main-nav a:hover{color:var(--brand-accent-light)}
@@ -211,7 +211,7 @@ section{padding:var(--section-pad) 0}
 /* Footer — black */
 .site-footer{background:linear-gradient(180deg,var(--brand-dark-2),var(--brand-dark) 38%);color:var(--on-dark-72);padding:var(--space-7) 0 0}
 .footer-top{display:flex;flex-wrap:wrap;gap:var(--space-6);justify-content:space-between;padding-bottom:var(--space-6)}
-.footer-brand img{height:72px;width:auto}
+.footer-brand img{width:200px;height:auto}
 .footer-sub{font-family:var(--font-mono);font-size:var(--text-eyebrow);text-transform:uppercase;letter-spacing:.16em;color:var(--brand-accent-light);margin-top:var(--space-3)}
 .footer-tagline{margin-top:var(--space-2);max-width:36ch}
 .footer-links{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-5);list-style:none}
@@ -238,7 +238,7 @@ section{padding:var(--section-pad) 0}
   .process-grid{grid-template-columns:repeat(2,1fr)}
   .contact-grid{grid-template-columns:1fr}
   .header-inner{height:68px}
-  .brand img{height:48px}
+  .brand img{width:160px;height:auto}
   .main-nav{position:fixed;top:68px;left:0;right:0;bottom:0;background:var(--brand-dark);flex-direction:column;align-items:stretch;gap:0;padding:var(--space-4) var(--space-5);transform:translateX(100%);visibility:hidden;transition:transform var(--dur) var(--ease),visibility 0s linear var(--dur)}
   .main-nav.open{transform:none;visibility:visible;transition:transform var(--dur) var(--ease),visibility 0s}
   .main-nav a{padding:var(--space-3) 0;border-bottom:1px solid var(--line-dark);font-size:1rem;color:var(--on-dark-82);min-height:48px}
