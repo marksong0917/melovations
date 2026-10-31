@@ -1,0 +1,28 @@
+// Melovations v1 — mobile nav toggle + draft form guard (no backend yet).
+(function () {
+  var toggle = document.getElementById('navToggle');
+  var nav = document.getElementById('mainNav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  var form = document.getElementById('draftForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = document.getElementById('formStatus');
+      if (status) {
+        status.textContent = 'This draft form is not connected yet — please call 647-272-0822 or email melovations.info@gmail.com.';
+      }
+    });
+  }
+})();
