@@ -93,6 +93,7 @@ section{padding:var(--section-pad) 0}
 .main-nav{display:flex;align-items:center;gap:26px}
 .main-nav a{color:var(--header-text);font-size:.92rem;font-weight:500;white-space:nowrap;transition:color var(--dur);padding:10px 4px;border-radius:6px}
 .main-nav a:hover{color:var(--brand-accent-light)}
+.main-nav a[aria-current="page"]{color:var(--brand-accent-light);box-shadow:inset 0 -2px 0 var(--brand-accent)}
 .main-nav .btn{padding:12px 22px}
 .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:var(--space-2);color:var(--header-text)}
 
@@ -114,6 +115,30 @@ section{padding:var(--section-pad) 0}
 .hero-panel::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--brand-accent),transparent 75%)}
 .hero-panel img{position:relative;width:100%;height:auto}
 .hero-panel figcaption{position:relative;margin-top:var(--space-5);padding-top:var(--space-4);border-top:1px solid var(--line-dark);display:flex;flex-direction:column;gap:2px}
+/* Photo variant: real project photo fills the framed panel, caption overlays. */
+.hero-panel-photo{padding:0}
+.hero-panel-photo img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover}
+.hero-panel-photo figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:var(--space-6) var(--space-5) var(--space-4);border-top:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.85))}
+
+/* Page hero (Commercial / About) */
+.page-hero{background:var(--brand-dark);color:var(--on-dark);padding:var(--space-8) 0;background-image:radial-gradient(720px 380px at 85% -40px,rgba(249,115,22,.16),transparent 70%)}
+.page-hero .eyebrow{display:inline-block;margin-bottom:var(--space-4);padding:7px 13px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(255,255,255,.06)}
+.page-hero h1{color:var(--on-dark);font-size:var(--text-hero);max-width:18ch}
+.page-hero .lead{color:var(--on-dark-82);margin-top:var(--space-4);max-width:56ch}
+
+/* Insurance callout */
+.insure{background:var(--paper-soft);border:1px solid var(--line);border-left:3px solid var(--brand-accent);border-radius:var(--radius);padding:var(--space-6);box-shadow:var(--shadow-1)}
+.insure-title{font-size:1.35rem;margin-bottom:var(--space-2)}
+.insure p{color:var(--ink-soft)}
+.footer-insure{margin-top:var(--space-3);color:var(--on-dark-82);font-size:.95rem;max-width:38ch}
+
+/* Photo gallery */
+.gallery{columns:3;column-gap:var(--space-5)}
+.gallery figure{break-inside:avoid;margin:0 0 var(--space-5);background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-1);transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur)}
+.gallery figure:hover{transform:translateY(-4px);box-shadow:var(--shadow-2);border-color:rgba(249,115,22,.45)}
+.gallery img{width:100%;height:auto;transition:transform var(--dur) var(--ease)}
+.gallery figure:hover img{transform:scale(1.02)}
+.gallery figcaption{padding:var(--space-3) var(--space-4);font-size:.92rem;font-weight:600;color:var(--ink)}
 .hero-panel-name{font-family:var(--font-display);font-weight:700;color:var(--on-dark);letter-spacing:-.01em}
 .hero-panel-sub{font-family:var(--font-mono);font-size:var(--text-eyebrow);text-transform:uppercase;letter-spacing:.16em;color:var(--brand-accent-light)}
 
@@ -207,11 +232,13 @@ section{padding:var(--section-pad) 0}
   .contact-grid{grid-template-columns:1fr}
   .header-inner{height:64px}
   .brand img{height:44px}
-  body.single-page .main-nav{position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--brand-dark);flex-direction:column;align-items:stretch;gap:0;padding:var(--space-4) var(--space-5);transform:translateX(100%);transition:transform var(--dur) var(--ease)}
-  body.single-page .main-nav.open{transform:none}
-  body.single-page .main-nav a{padding:var(--space-3) 0;border-bottom:1px solid var(--line-dark);font-size:1rem;color:var(--on-dark-82)}
-  body.single-page .main-nav .btn{border:0;text-align:left;background:none;box-shadow:none;color:var(--brand-accent-light);padding-left:0}
-  body.single-page .nav-toggle{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
+  .main-nav{position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--brand-dark);flex-direction:column;align-items:stretch;gap:0;padding:var(--space-4) var(--space-5);transform:translateX(100%);transition:transform var(--dur) var(--ease)}
+  .main-nav.open{transform:none}
+  .main-nav a{padding:var(--space-3) 0;border-bottom:1px solid var(--line-dark);font-size:1rem;color:var(--on-dark-82)}
+  .main-nav a[aria-current="page"]{box-shadow:none;color:var(--brand-accent-light)}
+  .main-nav .btn{border:0;text-align:left;background:none;box-shadow:none;color:var(--brand-accent-light);padding-left:0}
+  .nav-toggle{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
+  .gallery{columns:2}
 }
 @media (max-width:760px){
   .hero-split .grid{grid-template-columns:1fr}
@@ -226,6 +253,8 @@ section{padding:var(--section-pad) 0}
 }
 @media (max-width:560px){
   .process-grid{grid-template-columns:1fr}
+  .gallery{columns:1}
+  .insure{padding:var(--space-5)}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
